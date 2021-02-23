@@ -1,0 +1,155 @@
+﻿@model SmartphoneShop.Models.SmartphoneFeature
+
+@{
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit","SmartphoneFeatures",FormMethod.Post,new { enctype = "multipart/form-data"}))
+{
+	@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+	<h4>SmartphoneFeature</h4>
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(model => model.MobileId)
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" , min = 0, max = 5 } })
+			@Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control",  min = 0 } })
+			@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.ScreenSize, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.ScreenSize, new { htmlAttributes = new { @class = "form-control" , min =0 } })
+			@Html.ValidationMessageFor(model => model.ScreenSize, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.RAM, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.TextBoxFor(model=> model.RAM , new { @class = "form-control" , min =0})
+			@Html.ValidationMessageFor(model => model.RAM, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.InternalStorage, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.TextBoxFor(model => model.InternalStorage, new { @class = "form-control" , min =0})
+			@Html.ValidationMessageFor(model => model.InternalStorage, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.FrontCamera, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.TextBoxFor(model => model.FrontCamera, new { @class = "form-control" , min = 0})
+			@Html.ValidationMessageFor(model => model.FrontCamera, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.RearCamera, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.TextBoxFor(model => model.RearCamera, new { @class = "form-control" , min = 0})
+			@Html.ValidationMessageFor(model => model.RearCamera, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.OS, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.OS, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.OS, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Sim, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Sim, new { htmlAttributes = new { @class = "form-control" , min = 1, max = 2 } })
+			@Html.ValidationMessageFor(model => model.Sim, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Sensor, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Sensor, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Sensor, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.BatteryCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.TextBoxFor(model => model.RAM, new { @class = "form-control" , min = 0})
+			@Html.ValidationMessageFor(model => model.BatteryCapacity, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			<input type="file" id="Imageup" name="Imageup" class="btn btn-info" />
+			@Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Save" class="btn btn-default" />
+		</div>
+	</div>
+</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
+@section scripts
+{
+	@Scripts.Render("~/bundles/jqueryval")
+}

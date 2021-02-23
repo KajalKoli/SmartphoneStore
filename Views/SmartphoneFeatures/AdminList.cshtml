@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SmartphoneShop.Models.SmartphoneFeature>
+@{
+	ViewBag.Title = "List of Mobiles";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" ;style="margin-top:50px">
+	<h4 style="text-align:center;color:#000000;margin-top:40px">Available Smartphones</h4>
+	<div class="jumbotron" style="justify-content:flex-start;background-color:#c3abe9">
+		<div class="dropdown" style="align-items:flex-end; margin-bottom:30px">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+				Filter Results
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="@Url.Action("BrandFilter","SmartphoneFeatures")">Sort By Brands </a></li>
+				<li><a href="@Url.Action("HighToLow","SmartphoneFeatures")">High To Low(Price)</a></li>
+				<li><a href="@Url.Action("LowToHigh","SmartphoneFeatures")">Low To High(Price)</a></li>
+			</ul>
+			<div class="pull-right">
+				@Html.ActionLink("Add New", "Create")
+			</div>
+		</div>
+
+		<table class="table">
+
+			@foreach (var item in Model)
+			{
+
+				<tr>
+					<td>
+						<img src="@Url.Content(@item.Image ?? "~/Content/Image/Default_Image.jpg")" height="150" width="150" style="border-radius:25px;border:1px solid black" />
+					<th>
+						@Html.ActionLink(item.Model, "Details", new { id = item.MobileId }) <br />
+						<b> RAM </b>  :   @item.RAM GB<br />
+						<b> Color </b>  :   @item.Color <br />
+						<b> Price </b>  :   Rs. @item.Price <br />
+						<b> Rating </b>  :   @item.Rating <br />
+						<h6 class="card-subtitle text-muted">
+							@Html.ActionLink("Edit", "Edit", new { id = item.MobileId }) |
+						@Html.ActionLink("Delete", "Delete", new { id = item.MobileId })
+					</h6>
+				</th>
+				</td>
+			</tr>
+		}
+		</table>
+
+	</div>
+</div>

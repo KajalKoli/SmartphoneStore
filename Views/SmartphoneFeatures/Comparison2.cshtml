@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SmartphoneShop.Models.SmartphoneFeature>
+@{
+	ViewBag.Title = "ComparisonTable";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+	<head>
+		<style>
+			.jumbotron {
+				background-color: #7bb3dc;
+				margin: 100px;
+			}
+			td, th {
+				padding-left: 10px;
+				padding-right: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<div class="jumbotron">
+		<h3 style="text-align:center;color:darkblue;padding-bottom:10px">Comparison of Internal Storage and RAM</h3>
+		<table class="table table-hover">
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Brand)
+				</th>
+				@foreach (var item in Model)
+				{
+					<td>
+						@item.Brand
+					</td>
+				}
+			</tr>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Model)
+				</th>
+				@foreach (var item in Model)
+				{
+					<td>
+						@item.Model
+					</td>
+				}
+			</tr>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.InternalStorage)
+				</th>
+
+				@foreach (var item in Model)
+				{
+					<td>
+						@item.InternalStorage GB
+					</td>
+				}
+			</tr>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.RAM)
+				</th>
+				@foreach (var item in Model)
+				{
+					<td>
+						@item.RAM GB
+					</td>
+				}
+			</tr>
+		</table>
+		<br>
+		@if (ViewBag.Message != null)
+		{
+			<script type="text/javascript">
+				window.onload = function () {
+					alert("@ViewBag.Message");
+				};
+			</script>
+		}
+		<br>
+		<p style="text-align:center">
+
+			<br />
+			@Html.ActionLink("Back to Home", "Index")
+		</p>
+	</div>
+

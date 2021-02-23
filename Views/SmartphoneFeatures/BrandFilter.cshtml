@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SmartphoneShop.Models.SmartphoneFeature>
+@{
+	ViewBag.Title = "BrandFilter";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+	.jumbotron {
+		background-color: #fbbbc5;
+		margin: 20px;
+		align-content:center;
+	}
+
+	dd {
+		padding-bottom: 5px;
+	}
+	.btn {
+
+		text-align:center;
+		width:80%;
+		background-color:#ec5c5c;
+	}
+</style>
+<div style="padding-top:10px">
+<h1 style="text-align:center"> <b>Brands</b></h1>
+	</div>
+<div class="jumbotron">
+	<h3> <b>Choose the Brands</b></h3>
+	<dl>
+
+		@foreach (var item in Model)
+		{
+			<dd>
+				@using (Html.BeginForm("BrandBasedModels", "SmartphoneFeatures", FormMethod.Post))
+				{
+					<button type="submit" class="btn" value="@item.Brand" name="brand">@item.Brand</button>
+
+				}
+			</dd>
+		}
+	</dl> 
+</div>

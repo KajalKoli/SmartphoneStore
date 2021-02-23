@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SmartphoneShop.Models.SmartphoneFeature>
+
+@{
+	ViewBag.Title = "Welcome Admin !!!";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align :center;color:#000000" ;font-size:20%> Latest mobiles </h2>
+<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+		Filter Results
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		<li><a href="@Url.Action("BrandFilter","SmartphoneFeatures")">Sort By Brands </a></li>
+		<li><a href="@Url.Action("HighToLow","SmartphoneFeatures")">High To Low(Price)</a></li>
+		<li><a href="@Url.Action("LowToHigh","SmartphoneFeatures")">Low To High(Price)</a></li>
+	</ul>
+</div>
+<div class="pull-right">
+	@Html.ActionLink("Add New", "Create")
+</div>
+<div class="jumbotron">
+	<table class="table">
+		<tr class="table-bordered">
+			@foreach (var item in Model)
+
+			{
+
+				<td class="table-info" style="background-color:blanchedalmond;">
+					<img src="@Url.Content(@item.Image ?? "~/Content/Image/Default_Image.jpg")" height="200" width="200" style="border-radius:25px;border:1px solid black" />
+					<br>
+					<br>
+					@Html.ActionLink(item.Model, "Details", new { id = item.MobileId })
+					<br />
+					<h6 class="card-subtitle text-muted">@Html.ActionLink("Edit", "Edit", new { id = item.MobileId })</h6>
+					<h6 class="card-subtitle text-muted">@item.Brand</h6>
+				</td>
+
+			}
+		</tr>
+	</table>
+</div>
+
+
